@@ -15,7 +15,7 @@ public class DeleteAsyncTask extends AsyncTask<Integer, Void, Void>{
 
     @Override
     protected Void doInBackground(Integer... params) {
-        noteDB.deleteNotepad(params[0]);
+        noteDB.deleteById(params[0]);
         return null;
     }
 }

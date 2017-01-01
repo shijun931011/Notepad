@@ -10,28 +10,29 @@ import com.example.shijun.notepad.Bean.GlobalParams;
  * Created by shijun on 2016/12/23.
  */
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
-    private final static String DB_NAME ="smart_notepad.db";
-    private final static int VERSION = 1;//版本号
-    public MySQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,
-                              int version) {
+    /**
+     * 创建笔记表
+     */
+    private static final String CREATE_NOTE = "create table Note(" +
+            "id integer primary key autoincrement," +
+            "content text," +
+            "time text)";
+
+    private Context mContext;
+
+    public MySQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-    }
-    public MySQLiteOpenHelper(Context cxt){
-        this(cxt, DB_NAME, null, VERSION);
+        mContext = context;
     }
 
-    public MySQLiteOpenHelper(Context cxt,int version) {
-        this(cxt,DB_NAME,null,version);
-    }
-    public void onCreate(SQLiteDatabase db) {
-        String sql = "create table "+ GlobalParams.DB_NAME+" ( " +GlobalParams.DB_VALUE_ID_KEY+
-                " integer primary key autoincrement, " +GlobalParams.DB_VALUE_DATE_KEY+" integer , "+
-                GlobalParams.DB_VALUE_TIME_KEY+" varchar(20) , "+
-                GlobalParams.DB_VALUE_CONTENT_KEY+" text )";
-        db.execSQL(sql);
-    }
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        sqLiteDatabase.execSQL(CREATE_NOTE);
+//        Toast.makeText(mContext,"Created",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
 }

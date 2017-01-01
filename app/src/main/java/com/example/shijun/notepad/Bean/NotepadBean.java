@@ -7,7 +7,6 @@ import java.io.Serializable;
  */
 public class NotepadBean implements Serializable {
     private int id;
-    private int date;
     private String time;
     private String content;
 
@@ -19,13 +18,6 @@ public class NotepadBean implements Serializable {
         this.id = id;
     }
 
-    public int getDate() {
-        return date;
-    }
-
-    public void setDate(int date) {
-        this.date = date;
-    }
 
     public String getTime() {
         return time;

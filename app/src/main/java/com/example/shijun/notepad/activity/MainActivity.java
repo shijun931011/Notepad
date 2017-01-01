@@ -1,5 +1,6 @@
 package com.example.shijun.notepad.activity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -15,17 +16,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.shijun.notepad.Bean.DeleteAsyncTask;
-import com.example.shijun.notepad.Bean.GlobalParams;
+
 import com.example.shijun.notepad.Bean.NotepadBean;
 import com.example.shijun.notepad.R;
 import com.example.shijun.notepad.adapter.NotepadeAdapter;
 import com.example.shijun.notepad.db.DataHelper;
-import com.example.shijun.notepad.service.MainService;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private TextView mTilte;
     private TextView mNoteNum;
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     class NewAsyncTask extends AsyncTask<Void, Void, List<NotepadBean>>{
         @Override
         protected List<NotepadBean> doInBackground(Void... voids) {
-            mNoteList = mDataHelper.getNotepadList();
+            mNoteList = mDataHelper.loadNotes();
             return mNoteList;
         }
 

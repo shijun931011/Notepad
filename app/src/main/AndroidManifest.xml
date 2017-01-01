@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shijun.notepad">
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
@@ -21,10 +21,7 @@
         <activity android:name=".activity.AddContentActivity" />
         <activity android:name=".activity.RemindActivity" />
 
-        <service
-            android:name=".service.MainService"
-            android:enabled="true"
-            android:exported="true" />
+
 
         <activity android:name=".activity.UpdateOrReadActivity" />
         <activity android:name=".activity.AboutActivity"></activity>
